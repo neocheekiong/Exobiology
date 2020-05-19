@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head.ejs') %>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Scientists of the Far Planet</h1>
+        <% data.forEach((scientist, index) => { %>
+
+        <div class="row">
+            <h4 class="col-6"><%= scientist.name %></h4>
+            <div class="col-2 d-flex">
+                <form action="/index/<%= index %>?_method=DELETE" method="POST">
+                    <input type="submit" value="DELETE" class="btn btn-danger">
+                </form>
+                <a href="/index/<%= index %>/edit" class="btn btn-primary">Edit</a>
+
+            </div>
+        </div>
+
+        <p><%= scientist.description %></p>
+        <% }) %>
+        <a href="/new" class="btn btn-primary">Add New Scientist</a>
+    </div>
+</body>
+
+</html>
